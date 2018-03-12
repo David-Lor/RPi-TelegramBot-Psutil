@@ -5,16 +5,16 @@
 
 import telebot
 import psutil
-from time import sleep
+#from time import sleep
 
-bot = telebot.TeleBot("TOKEN") #Actualizar token
+bot = telebot.TeleBot("TOKEN") #TODO Actualizar token
 
 @bot.message_handler(commands=["start"])
 def comm_start(message):
     #El comando /start da la bienvenida al bot
     bot.send_message(
         message.chat.id,
-        "¡Hola!"
+        "¡Hola! Este bot envía información sobre el sistema de la RPi, como uso de CPU, memoria y disco. Consulta /help para ver los comandos disponibles."
     )
     print("Solicitado comando /start")
 
@@ -23,7 +23,8 @@ def comm_help(message):
     #El comando /help proporciona información de ayuida sobre cómo se usa el bot
     bot.send_message(
         message.chat.id,
-        ""
+        "*Comandos disponibles*\n/cpu - Información del procesador\n/memoria - Información de la RAM\n/disco - Información de almacenamiento",
+        parse_mode="Markdown"
     )
     print("Solicitado comando /help")
 
@@ -68,6 +69,7 @@ def comm_memory(message):
     )
 
     bot.reply_to(message, texto, parse_mode="Markdown")
+
 
 @bot.message_handler(commands=["disco","disk"])
 def comm_disk(message):
