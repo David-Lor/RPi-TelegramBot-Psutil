@@ -7,7 +7,7 @@ import telebot
 import psutil
 from time import sleep
 
-bot = telebot.TeleBot("478627117:AAGksViQLKWE0Wh1Ys42f6-a65wkdrmVBEE")
+bot = telebot.TeleBot("TOKEN") #Actualizar token
 
 @bot.message_handler(commands=["start"])
 def comm_start(message):
